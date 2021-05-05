@@ -9,7 +9,7 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.10.4",
-        "@babel/preset-react": "^7.10.4"
+        "@babel/preset-react": "^7.13.13"
     },
     "dependencies": {
         "docusaurus": "^1.14.6",
