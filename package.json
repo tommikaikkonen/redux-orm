@@ -65,7 +65,7 @@
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/register": "^7.13.8",
-    "@types/jsdoc-to-markdown": "^6.0.0",
+    "@types/jsdoc-to-markdown": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
