@@ -22,7 +22,7 @@ type QueryType = typeof FILTER | typeof EXCLUDE | typeof ORDER_BY;
  * A single `QueryClause`.
  * Multiple `QueryClause`s can be combined into a {@link Query}.
  */
-interface QueryClause<Payload extends object = {}> {
+export interface QueryClause<Payload extends object = {}> {
     type: QueryType;
     payload: Payload;
 }
@@ -30,7 +30,7 @@ interface QueryClause<Payload extends object = {}> {
 /**
  * Query definition, contains target table and a collection of {@link QueryClause}.
  */
-interface Query {
+export interface Query {
     table: string;
     clauses: QueryClause[];
 }
@@ -38,14 +38,14 @@ interface Query {
 /**
  * Query wrapper definition, wraps {@link Query}.
  */
-interface QuerySpec {
+export interface QuerySpec {
     query: Query;
 }
 
 /**
  * Query result.
  */
-interface QueryResult<Row extends Record<string, Serializable> = {}> {
+export interface QueryResult<Row extends Record<string, Serializable> = {}> {
     rows: ReadonlyArray<Row>;
 }
 
@@ -62,7 +62,7 @@ type UpdateStatus = typeof SUCCESS | typeof FAILURE;
 /**
  * Data update definition
  */
-interface UpdateSpec<Payload = any> {
+export interface UpdateSpec<Payload = any> {
     action: UpdateType;
     payload?: Payload;
     query?: Query;
@@ -71,7 +71,7 @@ interface UpdateSpec<Payload = any> {
 /**
  * Data update result.
  */
-interface UpdateResult<
+export interface UpdateResult<
     I extends IndexedModelClasses<any>,
     Payload extends object = {}
 > {
@@ -83,7 +83,7 @@ interface UpdateResult<
 /**
  * Transactions aggregate batches of operations.
  */
-interface Transaction {
+export interface Transaction {
     batchToken: BatchToken;
     withMutations: boolean;
 }
@@ -95,7 +95,7 @@ interface Transaction {
  * @see {@link ModelTableOpts}
  * @see {@link Table}
  */
-interface SchemaSpec<I extends IndexedModelClasses<any>> {
+export interface SchemaSpec<I extends IndexedModelClasses<any>> {
     tables: { [K in keyof I]: ModelTableOpts<I[K]> };
 }
 
@@ -106,7 +106,7 @@ interface SchemaSpec<I extends IndexedModelClasses<any>> {
  * @see {@link TableSpec}
  * @see {@link Table}
  */
-interface Database<
+export interface Database<
     I extends IndexedModelClasses<any>,
     Tables = { [K in keyof I]: Table<I[K]> }
 > {
@@ -174,6 +174,6 @@ type DatabaseCreator = typeof createDatabase;
  *
  *  @return a {@Link Database} instance, ready for query and data update operation.
  */
-declare function createDatabase<I extends IndexedModelClasses<any>>(
+export function createDatabase<I extends IndexedModelClasses<any>>(
     schemaSpec: SchemaSpec<I>
 ): Database<I>;

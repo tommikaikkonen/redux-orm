@@ -1,27 +1,34 @@
 import { IndexedModelClasses, ORM, OrmState } from "./ORM";
 import { OrmSession } from "./Session";
 
-interface ORMReducer<I extends IndexedModelClasses, TAction extends any = any> {
+export interface ORMReducer<
+    I extends IndexedModelClasses,
+    TAction extends any = any
+> {
     (state: OrmState<I> | undefined, action: TAction): OrmState<I>;
 }
 
-type defaultUpdater<
+export type defaultUpdater<
     I extends IndexedModelClasses,
     TAction extends any = any
 > = (session: OrmSession<I>, action: TAction) => void;
 
-declare function createReducer<
+export function createReducer<
     I extends IndexedModelClasses,
     TAction extends any = any
 >(orm: ORM<I>, updater?: defaultUpdater<I, TAction>): ORMReducer<I, TAction>;
 
-type Selector<S, R> = (state: S) => R;
+export type Selector<S, R> = (state: S) => R;
 
-interface ORMSelector<I extends IndexedModelClasses, Args extends any[], R> {
+export interface ORMSelector<
+    I extends IndexedModelClasses,
+    Args extends any[],
+    R
+> {
     (session: OrmSession<I>, ...args: Args): R;
 }
 
-declare function createSelector<S, I, R1, R2, R3, R4, R5, R6, R>(
+export function createSelector<S, I, R1, R2, R3, R4, R5, R6, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     selector1: Selector<S, R1>,
@@ -33,7 +40,7 @@ declare function createSelector<S, I, R1, R2, R3, R4, R5, R6, R>(
     ormSelector: ORMSelector<I, [R1, R2, R3, R4, R5, R6], R>
 ): Selector<S, R>;
 
-declare function createSelector<S, I, R1, R2, R3, R4, R5, R>(
+export function createSelector<S, I, R1, R2, R3, R4, R5, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     selector1: Selector<S, R1>,
@@ -44,7 +51,7 @@ declare function createSelector<S, I, R1, R2, R3, R4, R5, R>(
     ormSelector: ORMSelector<I, [R1, R2, R3, R4, R5], R>
 ): Selector<S, R>;
 
-declare function createSelector<S, I, R1, R2, R3, R4, R>(
+export function createSelector<S, I, R1, R2, R3, R4, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     selector1: Selector<S, R1>,
@@ -54,7 +61,7 @@ declare function createSelector<S, I, R1, R2, R3, R4, R>(
     ormSelector: ORMSelector<I, [R1, R2, R3, R4], R>
 ): Selector<S, R>;
 
-declare function createSelector<S, I, R1, R2, R3, R>(
+export function createSelector<S, I, R1, R2, R3, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     selector1: Selector<S, R1>,
@@ -63,7 +70,7 @@ declare function createSelector<S, I, R1, R2, R3, R>(
     ormSelector: ORMSelector<I, [R1, R2, R3], R>
 ): Selector<S, R>;
 
-declare function createSelector<S, I, R1, R2, R>(
+export function createSelector<S, I, R1, R2, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     selector1: Selector<S, R1>,
@@ -71,20 +78,20 @@ declare function createSelector<S, I, R1, R2, R>(
     ormSelector: ORMSelector<I, [R1, R2], R>
 ): Selector<S, R>;
 
-declare function createSelector<S, I, R1, R>(
+export function createSelector<S, I, R1, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     selector1: Selector<S, R1>,
     ormSelector: ORMSelector<I, [R1], R>
 ): Selector<S, R>;
 
-declare function createSelector<S, I, R>(
+export function createSelector<S, I, R>(
     orm: ORM<I>,
     ormStateSelector: Selector<S, OrmState<I>>,
     ormSelector: ORMSelector<I, [], R>
 ): Selector<S, R>;
 
-declare function createSelector<I, R>(
+export function createSelector<I, R>(
     orm: ORM<I>,
     ormSelector: ORMSelector<I, [], R>
 ): Selector<OrmState<I>, R>;

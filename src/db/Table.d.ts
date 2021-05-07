@@ -113,7 +113,7 @@ export declare class Table<MClass extends typeof AnyModel> {
 /**
  * Type of {@link Model} state's branch `meta` field.
  */
-interface DefaultMeta<MIdType> {
+export interface DefaultMeta<MIdType> {
     maxId: MIdType extends number ? number : null | number;
 }
 

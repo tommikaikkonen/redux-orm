@@ -27,7 +27,7 @@ type OrmState<MClassMap extends IndexedModelClasses<any>> = {
  *
  * Enables customization of database creation.
  */
-interface ORMOpts<MClassMap> {
+export interface ORMOpts<MClassMap> {
     stateSelector?: (state: any) => OrmState<MClassMap>;
     createDatabase?: DatabaseCreator;
 }

@@ -1,3 +1,5 @@
+// Minimum TypeScript Version: 3.8
+
 import { ORM } from "./ORM";
 import Model from "./Model";
 import QuerySet from "./QuerySet";

@@ -28,6 +28,7 @@
     "ensure-clean-tree": "[ -z \"$(git status -s)\" ] || (echo \"Error: There are uncommitted changes in the git repostory.\" && false)",
     "lint": "run-p lint:*",
     "lint:es": "eslint src",
+    "lint:dts": "dtslint src --expectOnly",
     "clean": "rimraf lib es jsnext types dist docs coverage"
   },
   "keywords": [
@@ -74,6 +75,7 @@
     "codecov": "^3.8.1",
     "cross-env": "^7.0.3",
     "deep-freeze": "0.0.1",
+    "dtslint": "^4.0.9",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.15.0",
